@@ -5,7 +5,7 @@ from flask_login import LoginManager
 from flask_socketio import SocketIO
 from flask_cors import CORS
 from .user import User
-from .auth import get_from_db
+from .auth import attribute_from_id
 
 
 app = Flask(__name__)
@@ -24,8 +24,10 @@ CORS(app)
 
 @login_manager.user_loader
 def load_user(user_id):
-    username = get_from_db('username', user_id)
-    user = User(username, user_id)
-    return user
+    username = attribute_from_id('username', user_id)
+    if username:
+        user = User(username, user_id)
+        return user
+    return None
 
 
