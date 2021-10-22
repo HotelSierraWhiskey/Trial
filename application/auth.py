@@ -4,7 +4,7 @@ from .app import db
 from .user import User
 
 
-def _get(attribute, name):
+def get_from_db(attribute, name):
     query = db.session.execute(f"SELECT {attribute} FROM trial.users WHERE username='{name}'")
     query = query.first()
     if query:
@@ -16,9 +16,9 @@ def get_valid_user(form, db):
     form_name = form['login_username']
     form_password = form['login_password']
 
-    saved_name = _get('username', form_name)
-    saved_hash = _get('password', form_name)
-    saved_id = _get('id', form_name)
+    saved_name = get_from_db('username', form_name)
+    saved_hash = get_from_db('password', form_name)
+    saved_id = get_from_db('id', form_name)
 
     if not saved_name or not saved_hash:
         return None
