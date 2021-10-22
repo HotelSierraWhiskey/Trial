@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from .user import User
 
 
-def get_from_db(attribute, name):
+def attribute_from_name(attribute, name):
     from .app import db
     query = db.session.execute(f"SELECT {attribute} FROM trial.users WHERE username='{name}'")
     query = query.first()
@@ -11,14 +11,23 @@ def get_from_db(attribute, name):
         return query[0]
     return None
     
+
+def attribute_from_id(attribute, id):
+    from .app import db
+    query = db.session.execute(f"SELECT {attribute} FROM trial.users WHERE id={id}")
+    query = query.first()
+    if query:
+        return query[0]
+    return None
+
     
 def get_valid_user(form):
     form_name = form['login_username']
     form_password = form['login_password']
 
-    saved_name = get_from_db('username', form_name)
-    saved_hash = get_from_db('password', form_name)
-    saved_id = get_from_db('id', form_name)
+    saved_name = attribute_from_name('username', form_name)
+    saved_hash = attribute_from_name('password', form_name)
+    saved_id = attribute_from_name('id', form_name)
 
     if not saved_name or not saved_hash:
         return None
@@ -33,7 +42,7 @@ def get_valid_registration(form):
     form_password = form['register_password']
     form_retype_password = form['register_repeat_password']
 
-    if get_from_db('username', form_name):
+    if attribute_from_name('username', form_name):
         return None
 
     passwords_match = form_password == form_retype_password
