@@ -5,6 +5,7 @@ from flask_login import LoginManager
 from flask_socketio import SocketIO
 from flask_cors import CORS
 from .user import User
+from .auth import get_from_db
 
 
 app = Flask(__name__)
@@ -21,7 +22,6 @@ CORS(app)
 
 @login_manager.user_loader
 def load_user(user_id):
-    query = db.session.execute(f"SELECT username FROM trial.users WHERE id='{user_id}'")
-    username = query.first()[0]
+    username = get_from_db('username', user_id)
     user = User(username, user_id)
     return user
