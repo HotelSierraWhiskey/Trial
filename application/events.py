@@ -1,4 +1,4 @@
-from app import socketio
+from .app import socketio
 from flask_socketio import emit
 
 
@@ -16,4 +16,3 @@ def disconnection():
 @socketio.on('message')
 def message_received(data):
     print('message')
-
