@@ -1,0 +1,8 @@
+#   all venv files
+venv/
+
+#   secret key, database credentials
+*.json
+
+#   caching
+__pycache__
