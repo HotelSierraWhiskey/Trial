@@ -1,29 +1,20 @@
-<!doctype html>
-<html>
+{% extends "base.html" %}
 
-    <head>
-        <title>Chat</title>
-    </head>
+{% block content %}
 
-    <body>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.min.js"></script>
-        <script src="../static/chat.js"></script>
 
-        <button id="logout_button" class="btn logout">Logout</button>
-        <br>
-        <h1>Chat</h1>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.min.js"></script>
 
-        <form>
-            <label for="chat_message_text_area">message:</label><br>
-            <textarea id="chat_message_text_area" class="message_input" type="text" name="chat_message_text_area"></textarea><br>
-        </form>
+<button id="logout_button" class="btn logout">Logout</button>
+<br>
+<h1>Chat</h1>
+<br>
 
-        <button id="chat_send_button" class="btn send">Send</button>
-        <br>
+<a id='room_1' href="/rooms/Admin_Only"><span>Admin_Only</span></a>
+<a id='room_2' href="/rooms/Business"><span>Business</span></a>
+<a id='room_3' href="/rooms/Misc"><span>Misc</span></a>
 
-        <h2>Chat:</h2>
 
-        <div id="main_chat_box" class="chat_box"></div>
+{% endblock %}
 
-    </body>
-</html>
+    

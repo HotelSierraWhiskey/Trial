@@ -1,27 +1,27 @@
-<!doctype html>
-<html>
-    <head>
-        <title>Register</title>
-    </head>
+{% extends "base.html" %}
 
-    <body>
-        <h1>Register</h1>
-        <br>
+{% block content %}
 
-        <button id="logout_button">Logout</button>
-        <br>
-        
-        <form method="post">
-            <label for="register_username">Username:</label>
-            <input id="register_username" type="text" name="register_username"></input>
-            <br>
-            <label for="register_password">Password:</label>
-            <input id="register_password" type="text" name="register_password"></input>
-            <br>
-            <label for="register_repeat_password">Repeat Password:</label>
-            <input id="register_repeat_password" type="text" name="register_repeat_password"></input>
-            <button id="register_submit_button">Submit</button>
-        </form>
 
-    </body>
-</html>
+<h1>Register</h1>
+<br>
+
+<button id="logout_button">Logout</button>
+<br>
+
+<form method="post">
+    <label for="register_username">Username:</label>
+    <input id="register_username" type="text" name="register_username"></input>
+    <br>
+    <label for="register_password">Password:</label>
+    <input id="register_password" type="text" name="register_password"></input>
+    <br>
+    <label for="register_repeat_password">Repeat Password:</label>
+    <input id="register_repeat_password" type="text" name="register_repeat_password"></input>
+    <button id="register_submit_button">Submit</button>
+</form>
+
+{% endblock %}
+
+
+   

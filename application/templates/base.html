@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Trial</title>
+    </head>
+
+    <body>
+        {% if current_user.is_authenticated %}
+        Logged in as <b>{{ current_user.username }}</b>
+        {% endif %}
+        <br>
+        <br>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+        {% if current_user.is_authenticated %}
+        <a href="/home">Home</a>
+        <a href="/chat">Chat</a>
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

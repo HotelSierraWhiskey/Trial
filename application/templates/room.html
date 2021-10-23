@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<script src="../static/room.js", text="text/javascript"></script>
+<br>
+
+<button id="logout_button">Logout</button>
+<br>
+
+Chatting in [<span id="room_id"></span>]
+
+<ul id="users_in_room_list"></ul>
+
+<form>
+    <label for="chat_message_text_area">message:</label><br>
+    <textarea id="chat_message_text_area" class="message_input" type="text" name="chat_message_text_area"></textarea><br>
+</form>
+<br>
+
+
+<button id="chat_send_button" class="btn send">Send</button>
+<br>
+
+<h2>Chat:</h2>
+<br>
+
+
+<div id="main_chat_box" class="chat_box"></div>
+
+{% endblock %}
