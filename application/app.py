@@ -8,7 +8,7 @@ from .user import User
 from .auth import attribute_from_id
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 app.config.update(config)
 
