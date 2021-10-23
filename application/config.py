@@ -13,7 +13,7 @@ def _get(item):
 
 
 config = {
-    'SECRET_KEY': _get("secret_key"),
+    'SECRET_KEY': _get('secret_key'),
     'SQLALCHEMY_DATABASE_URI': f"mysql+pymysql://{_get('database_user')}:{_get('database_password')}@localhost/trial",
     'SQLALCHEMY_TRACK_MODIFICATIONS': False,
 }
