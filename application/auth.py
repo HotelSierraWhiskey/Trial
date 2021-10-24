@@ -48,8 +48,6 @@ def get_valid_registration(form):
     passwords_match = form_password == form_retype_password
     password_length_ok = len(form_password) >= 8
 
-    print("ok")
-
     if passwords_match and password_length_ok:
         return {'username': form_name, 'password': form_password}
 
