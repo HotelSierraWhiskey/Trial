@@ -13,12 +13,6 @@ sio.on('disconnect', () => {
 });
 
 
-sio.on('message', (data) => {
-  console.log('(GLOBAL) ', data);
-});
-
-
-
 window.onload = function() {
   
 
