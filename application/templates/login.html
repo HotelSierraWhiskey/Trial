@@ -4,10 +4,13 @@
 
 <h1>Login</h1>
 <br>
-
-<button id="logout_button">Logout</button>
 <br>
 
+{% if current_user.is_authenticated %}
+<h2>You are already logged in</h2>
+{% endif %}
+
+{% if not current_user.is_authenticated %}
 <form method="post">
     <label for="login_username">Username:</label>
     <input id="login_username" type="text" name="login_username"></input>
@@ -16,5 +19,6 @@
     <input id="login_password" type="text" name="login_password"></input>
     <button id="login_submit_button">Submit</button>
 </form>
+{% endif %}
 
 {% endblock %}

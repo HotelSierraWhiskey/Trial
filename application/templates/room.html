@@ -3,16 +3,19 @@
 {% block content %}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.min.js"></script>
-<script src="../static/events.js", text="text/javascript"></script>
 <script src="../static/room.js", text="text/javascript"></script>
+<script src="../static/events.js", text="text/javascript"></script>
 <br>
-
-<button id="logout_button">Logout</button>
 <br>
 
 Chatting in [<span id="room_id"></span>]
+<br>
 
 <ul id="users_in_room_list"></ul>
+<br>
+
+<div id="main_chat_box" class="chat_box"></div>
+<br>
 
 <form>
     <label for="chat_message_text_area">message:</label><br>
@@ -26,8 +29,5 @@ Chatting in [<span id="room_id"></span>]
 
 <h2>Chat:</h2>
 <br>
-
-
-<div id="main_chat_box" class="chat_box"></div>
 
 {% endblock %}

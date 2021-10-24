@@ -5,17 +5,23 @@
     </head>
 
     <body>
-
         {% if current_user.is_authenticated %}
+        
+        <script src="../static/base.js"></script>
+        <button id="logout_button" class="btn logout" onclick="redirectToLogout()">Logout</button>
         Logged in as <b id="username">{{ current_user.username }}</b>
+
         {% endif %}
         <br>
         <br>
-        <a href="/login">Login</a>
-        <a href="/register">Register</a>
+        <a id='base_login' href="/login">Login</a>
+        <a id='base_register' href="/register">Register</a>
+
         {% if current_user.is_authenticated %}
-        <a href="/home">Home</a>
-        <a href="/chat">Chat</a>
+
+        <a id='base_home' href="/home">Home</a>
+        <a id='base_chat' href="/chat">Chat</a>
+
         {% endif %}
 
         {% block content %}
