@@ -7,9 +7,17 @@ const room_socket = io();
 var active_users = []
 
 
-function setRoomID() {
-    document.getElementById('room_id').textContent = room_id;
-}
+
+function setRoomID() { document.getElementById('room_id').textContent = room_id; }
+
+
+function handleNavigateAway() { room_socket.emit('leave_room_request', {'username': username,'room_id': room_id}); }
+
+
+function renderJoinMessage() { document.getElementById("main_chat_box").innerHTML += `${username} has joined the chat<br>` }
+
+
+function renderLeaveMessage() { document.getElementById("main_chat_box").innerHTML += `${username} has left the chat<br>` }
 
 
 function setButtons() {
@@ -21,33 +29,6 @@ function setButtons() {
 }
 
 
-room_socket.on('message', (data) => {
-    const username = data["username"];
-    const message = data["data"];
-    document.getElementById("main_chat_box").innerHTML += (username + ' says: ' + message + "<br>");
-    console.log('(ROOM ' + data['room_id'] + ') ', data);
-});
-
-
-room_socket.on('notification', (data) => {
-    const notification_type = data['type']
-    if (notification_type == 'join') {
-        active_users.push(username);
-        document.getElementById("main_chat_box").innerHTML += (username + " has joined the chat<br>");
-    }
-    if (notification_type == 'leave') {
-        active_users.push(username);
-        document.getElementById("main_chat_box").innerHTML += (username + " has left the chat<br>");
-    }
-    console.log('(ROOM ' + room_id + ') ', data);
-});
-
-
-room_socket.on('active_users_response', (data) => {
-    active_users = data['active_users']
-});
-
-
 function requestJoinRoom() {
     const payload = {'username': username, "room_id": room_id};
     room_socket.emit('join_room_request', payload);
@@ -55,8 +36,10 @@ function requestJoinRoom() {
 
 
 function rerenderActiveUsers() {
+    document.getElementById('users_in_room_list').innerHTML = ''
     for (var i = 0; i < active_users.length; i++) {
-        document.getElementById('users_in_room_list').innerHTML += (active_users[i] + '<br>');
+        const entry = active_users[i]
+        document.getElementById('users_in_room_list').innerHTML += `<li id=${entry}>${entry}</li>`;
     }
 }
 
@@ -68,14 +51,6 @@ function handleSend() {
         room_socket.emit('message', payload);
     }
     document.getElementById('chat_message_text_area').value = '';
-}
-
-
-function handleNavigateAway() {
-    // room_socket.emit('leave_room_request', {'room': room_id});
-    // room_socket.emit('active_users_request', {'room': room_id});
-    // document.getElementById("main_chat_box").innerHTML += (username + " has left the chat<br>");
-    // rerenderActiveUsers();
 }
 
 
