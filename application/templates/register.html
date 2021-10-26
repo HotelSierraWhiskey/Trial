@@ -5,10 +5,13 @@
 
 <h1>Register</h1>
 <br>
-
-<button id="logout_button">Logout</button>
 <br>
 
+{% if current_user.is_authenticated %}
+<h2>Log out first to register a new user</h2>
+{% endif %}
+
+{% if not current_user.is_authenticated %}
 <form method="post">
     <label for="register_username">Username:</label>
     <input id="register_username" type="text" name="register_username"></input>
@@ -20,6 +23,7 @@
     <input id="register_repeat_password" type="text" name="register_repeat_password"></input>
     <button id="register_submit_button">Submit</button>
 </form>
+{% endif %}
 
 {% endblock %}
 
