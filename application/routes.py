@@ -3,6 +3,13 @@ from .auth import get_valid_user, get_valid_registration, register_user
 from .app import app
 from flask import request, render_template, redirect, url_for
 from flask_login import login_required, logout_user, current_user
+from .admin_utils import get_rooms
+
+
+
+@app.context_processor
+def get_available_rooms():
+    return dict(rooms=lambda: get_rooms())
 
 
 @app.route('/')
@@ -37,6 +44,16 @@ def register():
             register_user(registration)
             return redirect(url_for('home'))
     return render_template('register.html')
+
+
+@app.route('/settings')
+def settings():
+    return render_template('settings.html')
+
+
+@app.route('/support')
+def support():
+    return render_template('support.html')
 
 
 @app.route('/chat')
