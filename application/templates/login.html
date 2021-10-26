@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<link rel="stylesheet" href="../static/styles/login.css">
 
 <h1>Login</h1>
 <br>
@@ -11,7 +12,7 @@
 {% endif %}
 
 {% if not current_user.is_authenticated %}
-<form method="post">
+<form id="login_form" method="post">
     <label for="login_username">Username:</label>
     <input id="login_username" type="text" name="login_username"></input>
     <br>

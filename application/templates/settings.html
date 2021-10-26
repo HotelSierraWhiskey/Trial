@@ -1,9 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
+<link rel="stylesheet" href="../static/styles/settings.css">
 
-<button id='settings_change_username'>change username</button><br><br>
+<div id='settings_buttons'>
+<button id='settings_change_username'>Change username</button><br>
 
-<button id='settings_change_password'>change password</button><br><br>
+<button id='settings_change_password'>Change password</button><br>
+
+<button id='settings_change_password'>Change email address</button><br>
+
+<button id='settings_change_password'>Delete account</button><br>
+</div>
 
 {% endblock %}

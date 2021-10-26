@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width" initial-scale=1.0>
+        <link rel="stylesheet" href="../static/styles/base.css">
         <title>Trial</title>
     </head>
 
     <body>
-        {% if current_user.is_authenticated %}
-        
-        <script src="../static/base.js"></script>
-        <button id="logout_button" onclick="redirectToLogout()">Logout</button>
-        Logged in as <b id="username">{{ current_user.username }}</b>
+        <div id='header'>
+            {% if current_user.is_authenticated %}
+            
+            <script src="../static/base.js"></script>
+            <button id="logout_button" onclick="redirectToLogout()">Logout</button>
+            Logged in as <b id="username">{{ current_user.username }}</b>
 
-        {% endif %}
-        <br>
-        <br>
-        <a id='base_login' href="/login">Login</a>
-        <a id='base_register' href="/register">Register</a>
+            {% endif %}
+            <br>
+            <br>
+            <a id='base_login' href="/login">Login</a>
+            <a id='base_register' href="/register">Register</a>
 
-        {% if current_user.is_authenticated %}
+            {% if current_user.is_authenticated %}
 
-        <a id='base_home' href="/home">Home</a>
-        <a id='base_chat' href="/chat">Chat</a>
-        <a id='base_settings' href="/settings">Settings</a>
+            <a id='base_home' href="/home">Home</a>
+            <a id='base_chat' href="/chat">Chat</a>
+            <a id='base_settings' href="/settings">Settings</a>
+        </div>
 
         {% endif %}
         <br>
@@ -30,7 +34,9 @@
         {% endblock %}
 
         <br>
-        <a id='base_support' href="/support">Support the Project</a>
+        <div id='footer'>
+            <a id='base_support' href="/support">Support the Project</a>
+        </div>
 
     </body>
 </html>

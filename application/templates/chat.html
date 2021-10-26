@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
+<link rel="stylesheet" href="../static/styles/chat.css">
 
 
-<br/>
 <h1>Chat</h1>
 <br/>
 
@@ -12,18 +12,20 @@
 <script src="../static/admin.js"></script>
 <h4>Admin Panel</h4>
 <div id="chat_admin_panel">
-<button id="create_room_button" onclick="showCreateRoomTools('create')">Create Room</button><br/>
-<button id="delete_room_button" onclick="showCreateRoomTools('delete')">Delete Room</button><br/>
+<button id="create_room_button" onclick="showCreateRoomTools('create')">Create Room</button><br>
+<button id="delete_room_button" onclick="showCreateRoomTools('delete')">Delete Room</button><br>
 </div>
-
+<br>
+<br>
 {% endif %}
 
-<div id="chat_rooms">
+<h4>Rooms</h4>
+<ul id="chat_rooms">
 
 {% for room in rooms() %}
-<a id='{{ room.id }}' href='{{ room.href }}' onclick="null">{{ room.id }}</a><br/>
+<li><a id='{{ room.id }}' href='{{ room.href }}' onclick="null">{{ room.name }}</a></li>
 {% endfor %}
 
-</div>
+</ul>
 
 {% endblock %}

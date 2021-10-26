@@ -2,13 +2,14 @@
 
 {% block content %}
 
+<link rel="stylesheet" href="../static/styles/room.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.min.js"></script>
 <script src="../static/room.js", text="text/javascript"></script>
 <script src="../static/events.js", text="text/javascript"></script>
 <br>
 <br>
 
-Chatting in [<span id="room_id"></span>]
+Chatting in [<span id="room_name"></span>]
 <br>
 
 <ul id="users_in_room_list"></ul>
@@ -21,13 +22,11 @@ Chatting in [<span id="room_id"></span>]
     <label for="chat_message_text_area">message:</label><br>
     <textarea id="chat_message_text_area" class="message_input" type="text" name="chat_message_text_area"></textarea><br>
 </form>
-<br>
 
-
-<button id="chat_send_button" class="btn send">Send</button>
-<br>
-
-<h2>Chat:</h2>
+<button id="chat_send_button">Send</button>
+{% if current_user.is_admin %}
+<button id="chat_clear_chat_button">Clear chat</button><br>
+{% endif %}
 <br>
 
 {% endblock %}
