@@ -21,10 +21,6 @@ function renderLeaveMessage() { document.getElementById("main_chat_box").innerHT
 function setButtons() {
     document.getElementById('chat_send_button').onclick = handleSend;
     document.getElementById('chat_clear_chat_button').onclick = handleClearChat;
-    document.getElementById('base_login').onclick = handleNavigateAway;
-    document.getElementById('base_register').onclick = handleNavigateAway;
-    document.getElementById('base_home').onclick = handleNavigateAway;
-    document.getElementById('base_chat').onclick = handleNavigateAway;
 }
 
 
@@ -77,4 +73,9 @@ window.onload = function() {
             chat_send_button.click();
         }
     });
+}
+
+
+window.onbeforeunload = function() {
+    handleNavigateAway();
 }
