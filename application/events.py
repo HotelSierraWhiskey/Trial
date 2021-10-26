@@ -1,6 +1,7 @@
 from .app import socketio, app
 from flask import request
 from flask_socketio import emit, join_room, leave_room, rooms
+from .general_utils import get_room_name_from_id
 from .admin_utils import create_room, delete_room, add_active_user_to, remove_active_user_from, get_active_users_from
 
 
@@ -32,6 +33,16 @@ def handle_leave_room_request(data):
     users = get_active_users_from(room)
     emit('active_users_update', {'active_users': users}, to=room)
     leave_room(room)
+
+
+@socketio.on('room_name_request')
+def handle_room_name_request(data):
+    room_id = data['room_id']
+    room_name = get_room_name_from_id(room_id)
+    if room_name:
+        emit('room_name_update', {'room_name': room_name})
+    else:
+        print('Error')
 
 
 @socketio.on('active_users_request')
