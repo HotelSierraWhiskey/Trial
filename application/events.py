@@ -42,7 +42,7 @@ def handle_room_name_request(data):
     if room_name:
         emit('room_name_update', {'room_name': room_name})
     else:
-        print('Error')
+        print('handle_room_name_request(): Error')
 
 
 @socketio.on('active_users_request')
