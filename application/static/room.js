@@ -35,7 +35,7 @@ function requestJoinRoom() {
 }
 
 
-function rerenderActiveUsers() {
+function renderActiveUsers() {
     document.getElementById('users_in_room_list').innerHTML = ''
     for (var i = 0; i < active_users.length; i++) {
         const entry = active_users[i]
