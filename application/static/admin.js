@@ -1,39 +1,61 @@
 admin_socket = io();
 
-
+var create_room_tools_items = [];
 
 function showCreateRoomTools(operation) {
-    if (document.getElementById('create_room_name_field')) {
-        hideCreateRoomTools();
-    }
+    var prompt_span = document.createElement('span');
+    prompt_span.id = 'create_room_prompt_span';
+    prompt_span.textContent = `enter name of room to ${operation}`;
+    create_room_tools_items.push(prompt_span);
 
-    var field = document.createElement('input')
-    field.id = 'create_room_name_field'
+    var br = document.createElement('br');
+    br.id = 'create_room_line_break';
+    create_room_tools_items.push(br);
 
-    var button = document.createElement('button')
-    button.textContent = 'Ok';
-    button.id = 'create_room_name_button';
+    var name_field = document.createElement('input');
+    name_field.id = 'create_room_name_field';
+    create_room_tools_items.push(name_field);
+
+    var ok_button = document.createElement('button');
+    ok_button.textContent = 'Ok';
+    ok_button.id = 'ok_create_room_button';
+    create_room_tools_items.push(ok_button);
+
+    var cancel_button = document.createElement('button');
+    cancel_button.textContent = 'Cancel';
+    cancel_button.id = 'cancel_create_room_button';
+    cancel_button.onclick = hideCreateRoomTools;
+    create_room_tools_items.push(cancel_button);
 
     if (operation == 'create') {
-        button.onclick = createRoom;
+        ok_button.onclick = createRoom;
     }
     if (operation == 'delete') {
-        button.onclick = deleteRoom;
+        ok_button.onclick = deleteRoom;
     }
-    document.getElementById('chat_admin_panel').append(field);
-    document.getElementById('chat_admin_panel').append(button);
+
+    for (const elem of create_room_tools_items) {
+        document.getElementById('chat_admin_panel').append(elem);
+    }
 }
 
 
 function hideCreateRoomTools() {
-    document.getElementById('create_room_name_field').remove();
-    document.getElementById('create_room_name_button').remove();
+    for (const elem of create_room_tools_items) {
+        document.getElementById(elem.id).remove();
+    }
+    create_room_tools_items = [];
 }
-
 
 
 function createRoom() {
     const name = document.getElementById('create_room_name_field').value;
+    const id = name.split(' ').join('');
+    const href = `rooms/${id}`;
+    const entry = `<li><a id=${id} href=${href} onclick='null'>${name}</a></li>`;
+    
+    document.getElementById('chat_rooms').innerHTML += entry;
+
     admin_socket.emit('create_room', {'name': name});
     hideCreateRoomTools();
 }
