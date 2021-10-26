@@ -1,3 +1,11 @@
-input {
+#chat_rooms {
+    height: 300px;
+    width: 340px;
+    padding: 5px;
     border: 1px solid black;
+    overflow-y: scroll;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
 }
+

@@ -4,3 +4,8 @@
     border: 1px solid black;
     padding: 10px;
 }
+
+
+#settings_delete_account_button {
+    background-color: tomato
+}

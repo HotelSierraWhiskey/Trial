@@ -1,31 +1,59 @@
+@import url('selectors.css');
+
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     padding-top: 25px;
-    background-color: whitesmoke;
+    vertical-align: middle;
+    background-color:rgba(205, 219, 216, 0.993)
 }
 
 
-/* label {
-    display: inline-block;
-    width: 140px;
-    text-align: right;
-}​ */
+h1 {
+    padding-top: 25px;
+}
+
+
+a {
+    padding-right: 3px;
+    padding-left: 3px;
+}
+
+
+input {
+    border: 1px solid black;
+}
+
+
+button {
+    width: auto;
+    border-radius: 4px;
+    border: 2px outset black;
+    background-color: whitesmoke;
+    padding: 3px;
+    cursor:pointer;
+ }
+
+
+.secure_input {
+    -webkit-text-security: circle;
+}
 
 
 #header {
-    position: fixed;
-    top: 0;
+    position: fixed; 
+    top: 10px;
     width: 100%;
 }
 
 
 #footer {
     position: fixed;
-    bottom: 0;
+    bottom: 10px;
     width: 100%;
 }
 
-input[type="text"] {
-    border: 1px;
-    border-style: solid;
+
+.room_entry {
+    font-size: large;
 }

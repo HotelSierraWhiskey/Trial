@@ -1,0 +1,38 @@
+input[type="text"] {
+    border: 1px;
+    border-style: solid;
+}
+
+
+button:hover {
+    filter: brightness(85%);
+}
+
+
+button:active {
+    filter: brightness(50%);
+}
+
+
+a:hover {
+    /* filter: brightness(60%); */
+    border-radius: 4px;
+    background-color:rgb(236, 239, 243)
+}
+
+
+a:active {
+    filter: brightness(50%);
+}
+
+
+a:link {
+    color: blue;
+    text-decoration: none;
+}
+
+
+a:visited {
+    color: blue;
+    text-decoration: none;
+}
