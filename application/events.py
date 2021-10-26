@@ -1,9 +1,7 @@
-from .app import socketio
+from .app import socketio, app
 from flask import request
-from flask_socketio import emit, join_room, leave_room
-
-#   using this until I get around to using redis
-active_users = {'1': set(), '2': set(), '3': set()}
+from flask_socketio import emit, join_room, leave_room, rooms
+from .admin_utils import create_room, delete_room, add_active_user_to, remove_active_user_from, get_active_users_from
 
 
 @socketio.on('client_connection')
@@ -20,8 +18,8 @@ def handle_disconnection():
 def handle_join_room_request(data):
     username = data['username']
     room = data['room_id']
-    active_users[room].add(username)
-    users = list(active_users[room])
+    add_active_user_to(room, username)
+    users = get_active_users_from(room)
     join_room(room)
     emit('active_users_update', {'active_users': users}, to=room)
 
@@ -30,8 +28,8 @@ def handle_join_room_request(data):
 def handle_leave_room_request(data):
     username = data['username']
     room = data['room_id']
-    active_users[room].remove(username)
-    users = list(active_users[room])
+    remove_active_user_from(room, username)
+    users = get_active_users_from(room)
     emit('active_users_update', {'active_users': users}, to=room)
     leave_room(room)
 
@@ -39,7 +37,7 @@ def handle_leave_room_request(data):
 @socketio.on('active_users_request')
 def handle_active_users_request(data):
     room = data['room_id']
-    users = list(active_users[room])
+    users = get_active_users_from(room)
     emit('active_users_update', {'active_users': users})
 
 
@@ -55,3 +53,15 @@ def handle_message(data):
 def handle_notification(data):
     room = data['room_id']
     emit('notification', data, to=room)
+
+
+@socketio.on('create_room')
+def handle_create_room(data):
+    name = data['name']
+    create_room(name)
+
+
+@socketio.on('delete_room')
+def handle_delete_room(data):
+    name = data['name']
+    delete_room(name)
