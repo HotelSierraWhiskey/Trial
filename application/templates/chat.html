@@ -3,15 +3,27 @@
 {% block content %}
 
 
-<br>
+<br/>
 <h1>Chat</h1>
-<br>
+<br/>
 
-<a id='room_1' href="/rooms/1" onclick=null><span>Room 1</span></a>
-<a id='room_2' href="/rooms/2" onclick=null><span>Room 2</span></a>
-<a id='room_3' href="/rooms/3" onclick=null><span>Room 3</span></a>
+{% if current_user.is_admin %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.min.js"></script>
+<script src="../static/admin.js"></script>
+<h4>Admin Panel</h4>
+<div id="chat_admin_panel">
+<button id="create_room_button" onclick="showCreateRoomTools('create')">Create Room</button><br/>
+<button id="delete_room_button" onclick="showCreateRoomTools('delete')">Delete Room</button><br/>
+</div>
 
+{% endif %}
+
+<div id="chat_rooms">
+
+{% for room in rooms() %}
+<a id='{{ room.id }}' href='{{ room.href }}' onclick="null">{{ room.id }}</a><br/>
+{% endfor %}
+
+</div>
 
 {% endblock %}
-
-    
