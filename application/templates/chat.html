@@ -15,15 +15,16 @@
 <button id="create_room_button" onclick="showCreateRoomTools('create')">Create Room</button><br>
 <button id="delete_room_button" onclick="showCreateRoomTools('delete')">Delete Room</button><br>
 </div>
-<br>
-<br>
 {% endif %}
 
 <h4>Rooms</h4>
 <ul id="chat_rooms">
 
 {% for room in rooms() %}
-<li><a id='{{ room.id }}' href='{{ room.href }}' onclick="null">{{ room.name }}</a></li>
+<span id='entry_{{ room.id }}'>
+    <a id='{{ room.id }}' class="room_entry" href='{{ room.href }}' onclick="null">{{ room.name }} ({{ room.active_users|length }})</a>
+    <br>
+</span>
 {% endfor %}
 
 </ul>
