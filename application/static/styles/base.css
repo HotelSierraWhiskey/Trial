@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 25px;
+    background-color: whitesmoke;
+}
+
+
+/* label {
+    display: inline-block;
+    width: 140px;
+    text-align: right;
+}​ */
+
+
+#header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+input[type="text"] {
+    border: 1px;
+    border-style: solid;
+}

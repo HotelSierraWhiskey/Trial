@@ -1,0 +1,25 @@
+
+#main_chat_box {
+    height: 250px;
+    width: 350px;
+    padding: 5px;
+    border: 1px solid black;
+    overflow-y: scroll;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+#chat_message_text_area {
+    height: 50px;
+    width: 355px;
+    border: 1px solid black;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+
+textarea {
+    border: 1px solid black;
+}
