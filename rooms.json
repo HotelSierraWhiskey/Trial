@@ -1,0 +1,10 @@
+{
+    "rooms": [
+        {
+            "name": "Admin Chat",
+            "id": "AdminChat",
+            "href": "rooms/AdminChat",
+            "active_users": []
+        }
+    ]
+}

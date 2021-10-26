@@ -2,7 +2,7 @@
 venv/
 
 #   secret key, database credentials
-*.json
+settings.json
 
 #   caching
 __pycache__
