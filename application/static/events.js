@@ -1,7 +1,9 @@
 room_socket.on('message', (data) => {
   const username = data["username"];
   const message = data["data"];
-  document.getElementById("main_chat_box").innerHTML += `${username} says: ${message}<br>`;
+  const item = `<span><b class="message_username">${username}:</b><span class=message_content> ${message}</span></span><br>`;
+  document.getElementById("main_chat_box").innerHTML += item;
+  document.getElementById('main_chat_box').lastChild.scrollIntoView();
 });
 
 
