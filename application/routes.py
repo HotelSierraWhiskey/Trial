@@ -46,6 +46,11 @@ def register():
     return render_template('register.html')
 
 
+@app.route('/profile/<user>')
+def profile(user):
+    return render_template('profile.html')
+
+
 @app.route('/settings')
 def settings():
     return render_template('settings.html')
@@ -66,3 +71,9 @@ def chat():
 @login_required
 def room(room_id):
     return render_template('room.html')
+
+
+@app.route('/video')
+@login_required
+def video():
+    return render_template('video.html')
