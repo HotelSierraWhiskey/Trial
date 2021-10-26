@@ -6,3 +6,6 @@ settings.json
 
 #   caching
 __pycache__
+
+#todo
+todo.txt
